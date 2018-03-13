@@ -1,0 +1,17 @@
+/nbproject/
+/.sass-cache/
+node_modules/
+/public/css/
+/public/img/
+/public/dist/
+/public/fonts/
+/public/js/
+/public/pjs/
+*.log
+/vendor/
+/composer.lock
+/app/config/config.local.php
+error.log
+access.log
+.DS_Store
+/public/.DS_Store
