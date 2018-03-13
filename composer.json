@@ -1,0 +1,23 @@
+{
+    "name": "intec/php-start",
+    "description": "Repositório padrão para criação de novos projetos",
+    "type": "project",
+    "license": "Private",
+    "authors": [
+        {
+            "name": "Márcio Dias",
+            "email": "marciojr91@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "intec/simple-router": "dev-master",
+        "intec/session": "dev-master",
+        "intec/tracker": "dev-master",
+        "txthinking/mailer": "dev-master",
+        "facebook/graph-sdk": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {"IntecPhp\\": "app/src"}
+    }
+}
