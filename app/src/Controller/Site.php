@@ -21,13 +21,7 @@ class Site
 
       $id = $u->create();
 
-      if($u->login()){
-        die("aqui");
-      }
-
       $rp = new ResponseHandler(200, 'Cadastro realizado com sucesso');
-
-      $rp->printJson();
 
     } else {
       $rp = new ResponseHandler(400, 'Faltam dados!');

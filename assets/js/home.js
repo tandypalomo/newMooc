@@ -2,7 +2,7 @@
     $(document).ready(function () {
 
         $("#btnCadastrar").click(function () {
-            
+
             var dados = {
                 txtNome: $("#txtNome").val(),
                 txtEmail: $("#txtEmail").val(),
@@ -12,13 +12,13 @@
                 tipo: $("#tipo").val()
             };
 
-            $.ajax({
+            $.post({
                 url: "/cadastrar",
-                type: "post",
-                dataType: "html",
+                dataType: "json",
                 data: dados,
                 success: function (result) {
-                    alert("Cadastro realizado");
+                  alert(result.message);
+                  $("#modalCadastro").modal("hide")
                 },
                 error: function (result) {
                     alert("Ocorreu um erro!");
@@ -29,28 +29,28 @@
         });
 
 
-        $("#btnLogar").click(function () {
+        $("#btnLogin").click(function () {
 
             var dados = {
                 email: $("#emailLogin").val(),
                 senha: $("#senhaLogin").val()
             };
 
-            $.ajax({
-                url: "../Action/UsuarioAC.php?req=logar",
+            $.post({
+                url: "/logar",
                 type: "post",
                 dataType: "html",
                 data: dados,
                 success: function (result) {
                     //0->aluno 1->professor 2->admin
                     if (result == '0') {
-                        location.href = 'View/alunoLogado.php';
+                        location.href = '/aluno';
                     }
                     if (result == '1') {
-                        location.href = 'View/professorLogado.php';
+                        location.href = '/professor';
                     }
                     if (result == '2') {
-                        location.href = 'View/interpreteLogado.php';
+                        location.href = '/interprete';
                     }
                     $("#resultado").html(result);
                 },

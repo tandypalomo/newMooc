@@ -15,7 +15,7 @@ class Usuario
     public static function create($nome, $email, $cpf, $senha, $tipo)
     {
       $conn = DbHandler::getInstance();
-
+      
       $stm = $conn->query('insert into usuario(nome, cpf, email, senha, tipo) values(?, ?, ?, ?, ?)', [
                     $nome, $cpf, $email, $senha, $tipo
                 ]);
