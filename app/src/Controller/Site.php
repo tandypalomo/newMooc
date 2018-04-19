@@ -50,5 +50,10 @@ class Site
     $rp->printJson();
   }
 
+  function logout() {
+
+    return Account->logout();
+    
+  }
 
 }
