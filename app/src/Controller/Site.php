@@ -13,7 +13,9 @@ class Site
     if ($email != "" && $senha != "") {
       $u = new Account($nome, $email, $cpf, $senha, $tipo);
       $id = $u->create();
+
       $rp = new ResponseHandler(200, 'Cadastro realizado com sucesso');
+
     } else {
       $rp = new ResponseHandler(400, 'Faltam dados!');
     }
@@ -32,4 +34,12 @@ class Site
     }
     $rp->printJson();
   }
+
+
+  function logout() {
+
+    return Account->logout();
+    
+  }
+
 }
