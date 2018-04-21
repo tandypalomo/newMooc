@@ -19,7 +19,9 @@ return [
         'pattern' => '/professor',
         'callback' => function() {
             $layout = new Layout();
-            $layout->render('professor/home');
+            $layout
+            ->addScript('/js/home-professor.min.js')
+            ->render('professor/home');
         },
     ],
     [
@@ -75,6 +77,12 @@ return [
             Controller\Site::logar();
         }
     ],
+    [
+         'pattern' => '/sair',
+         'callback' => function() {
+             Controller\Site::logout();
+         }
+     ],
     [
         'pattern' => '/user-area',
         'middlewares' => [

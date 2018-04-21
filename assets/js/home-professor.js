@@ -5,7 +5,7 @@ $(document).ready(function () {
       $.ajax({
             url: "/sair",
             success: function(data){
-              alert("Boa!");
+              
               window.location.href = "/home";
             },
             error: function (result) {
