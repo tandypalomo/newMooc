@@ -28,6 +28,7 @@ $(document).ready(function () {
     });
 
 
+
     $("#btnLogin").click(function () {
 
         var dados = {
@@ -60,6 +61,7 @@ $(document).ready(function () {
         });
     });
 
+
     $('.btn-sair').click(function(){
       $.ajax({
             url: "/sair",
@@ -69,7 +71,5 @@ $(document).ready(function () {
         });
 
       });
-
-
 
 });
