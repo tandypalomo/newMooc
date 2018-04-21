@@ -1,12 +1,10 @@
 <?php
-
-
 namespace IntecPhp\Controller;
 use IntecPhp\Model\Account;
 use IntecPhp\Model\ResponseHandler;
-
 class Site
 {
+
   function cadastrar() {
 
     $nome = filter_input(INPUT_POST, "txtNome");
@@ -16,19 +14,9 @@ class Site
     $tipo = filter_input(INPUT_POST, "tipo");
 
     if ($email != "" && $senha != "") {
-
       $u = new Account($nome, $email, $cpf, $senha, $tipo);
-
       $id = $u->create();
-
-      if($u->login()){
-        die("aqui");
-      }
-
       $rp = new ResponseHandler(200, 'Cadastro realizado com sucesso');
-
-      $rp->printJson();
-
     } else {
       $rp = new ResponseHandler(400, 'Faltam dados!');
     }
@@ -43,18 +31,17 @@ class Site
     if ($email != "" && $senha != "") {
 
       $u = new Account('', $email, '', $senha, '');
-
       $user = $u->login();
-
       $rp = new ResponseHandler(200, 'Cadastro realizado com sucesso', ['tipo' => $u->getTipo()]);
-
       $rp->printJson();
 
     } else {
+
       $rp = new ResponseHandler(400, 'Informe o email e a senha');
+
     }
+
     $rp->printJson();
   }
-
-
+  
 }
