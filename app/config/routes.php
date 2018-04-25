@@ -64,7 +64,7 @@ return [
             ]);
         }
     ],
-
+    //USER
     [
         'pattern' => '/cadastrar',
         'callback' => function() {
@@ -81,6 +81,13 @@ return [
          'pattern' => '/sair',
          'callback' => function() {
              Controller\Site::logout();
+         }
+     ],
+     //CURSO
+     [
+         'pattern' => '/cadastrar-curso',
+         'callback' => function() {
+             Controller\CursoController::cadastrar();
          }
      ],
     [

@@ -43,5 +43,5 @@ class Site
 
     $rp->printJson();
   }
-  
+
 }
