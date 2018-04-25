@@ -23,8 +23,8 @@ $(document).ready(function () {
                 alert("Ocorreu um erro!");
                 console.log(result);
             }
-
         });
+
     });
 
 
@@ -37,18 +37,18 @@ $(document).ready(function () {
 
         $.post({
             url: "/logar",
-            type: "post",
-            dataType: "html",
+            dataType: "json",
             data: dados,
             success: function (result) {
                 //0->aluno 1->professor 2->admin
-                if (result == '0') {
+                var tipo = result.data.tipo;
+                if (tipo == '0') {
                     location.href = '/aluno';
                 }
-                if (result == '1') {
+                if (tipo == '1') {
                     location.href = '/professor';
                 }
-                if (result == '2') {
+                if (tipo == '2') {
                     location.href = '/interprete';
                 }
                 $("#resultado").html(result);

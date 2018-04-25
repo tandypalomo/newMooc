@@ -32,8 +32,11 @@ class Site
 
       $u = new Account('', $email, '', $senha, '');
       $user = $u->login();
-      $rp = new ResponseHandler(200, 'Cadastro realizado com sucesso', ['tipo' => $u->getTipo()]);
-      $rp->printJson();
+
+      if($user) {
+        
+        $rp = new ResponseHandler(200, 'Cadastro realizado com sucesso', ['tipo' => $u->getTipo()]);
+      }
 
     } else {
 
