@@ -78,11 +78,11 @@ return [
         }
     ],
     [
-        'pattern' => '/sair',
-        'callback' => function() {
-            Controller\Site::logout();
-        }
-    ],
+         'pattern' => '/sair',
+         'callback' => function() {
+             Controller\Site::logout();
+         }
+     ],
     [
         'pattern' => '/user-area',
         'middlewares' => [
