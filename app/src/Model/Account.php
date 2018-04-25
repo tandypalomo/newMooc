@@ -32,16 +32,17 @@ class Account
     {
       $u = Usuario::login($this->email, $this->senha);
 
-      $this->nome = $u['nome'];
-      $this->cpf = $u['cpf'];
-      $this->tipo = $u['tipo'];
-      die($this->tipo);
-      if($this->tipo == 0){
+      if($u) {
+        session_start();
+        $this->nome = $u['nome'];
+        $this->cpf = $u['cpf'];
+        $this->tipo = $u['tipo'];
+        $this->id = $u['id'];
 
-        $session = Session::getInstance();
-        $session->set('id', $u['id']);
+        $_SESSION["userId"] = $u['id'];
         return $u;
       }
+
       return false;
     }
 

@@ -7,12 +7,11 @@ class CursoController
 {
 
     function cadastrar() {
-
+      session_start();
       $id ='';
       $nomeCurso = filter_input(INPUT_POST, "nomeCurso");
       $descricao = filter_input(INPUT_POST, "desc");
-      $idProfessor = filter_input(INPUT_POST, "idProf");
-
+      $idProfessor = $_SESSION["userId"];
 
       $curso = new CursoModel($id, $nomeCurso, $descricao, $idProfessor);
 
