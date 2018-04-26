@@ -90,6 +90,12 @@ return [
              Controller\CursoController::cadastrar();
          }
      ],
+     [
+         'pattern' => '/get-curso',
+         'callback' => function() {
+             Controller\CursoController::getCurso();
+         }
+     ],
     [
         'pattern' => '/user-area',
         'middlewares' => [

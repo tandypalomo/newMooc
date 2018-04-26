@@ -21,9 +21,13 @@ class CursoModel
         $this->idProfessor = $idProfessor;
     }
 
+    public function getCursoUserId($uId) {
+      return Curso::getCursoUserId($uId);
+    }
+
     public function create()
     {
-      $uId = Curso::createCurso($this->nomeCurso, $this->descricao, $this->idProfessor);
+      $cId = Curso::createCurso($this->nomeCurso, $this->descricao, $this->idProfessor);
     }
 
 

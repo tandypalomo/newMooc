@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  getCurso();
   $("#btnCadastraCurso").click(function () {
 
     var dados = {
@@ -41,3 +41,20 @@ $(document).ready(function () {
       });
 
 });
+
+
+function getCurso()
+{
+  $.post({
+		dataType: 'json',	//Definimos o tipo de retorno
+		url: '/get-curso',//Definindo o arquivo onde serão buscados os dados
+		success: function(dados){
+
+			for(var i=0;dados.length>i;i++){
+				$('#cursos').append('<li>'+dados[i].nomeCurso+'<ul id="aula"'+ dados[i].id +'></ul></li>');
+			}
+
+		}
+	});
+
+}
