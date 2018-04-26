@@ -31,32 +31,25 @@ class Curso {
         $conn = DbHandler::getInstance();
         $stm = $conn->query('select * from curso where idProfessor=? ORDER BY id DESC LIMIT 1', [ $idProf
                   ]);
-        if($u = $stm->fetch()) {
-            return $u['id'];
+        if($c = $stm->fetch()) {
+            return $c['id'];
         }
         return false;
     }
 
-    public static function getCursos()
+    public static function getCursoUserId($uId)
     {
-        // session_start();
-        $conn = new mysqli('localhost', 'root', 'root', 'mooc');
+      $conn = DbHandler::getInstance();
 
-        $sql = "select * from curso where idProfessor = " . $_SESSION['usuarioID']  ;
+      $stm = $conn->query('select * from curso where idProfessor=?', [ $uId
+                ]);
 
-        $re = $conn->query($sql);
+      if($stm) {
+        $c = $stm->fetchAll();
+        return $c;
 
-        if (!$re) {
-
-            return false;
-        }
-
-        $cursos = [];
-        while ($row = $re->fetch_assoc()) {
-            $cursos[] = $row;
-        }
-
-        return $cursos;
+      }
+      return false;
     }
 
 }

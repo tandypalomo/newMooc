@@ -28,16 +28,18 @@ class CursoController
 
     public static function getCurso()
     {
-        $cursos = CursoModel::getCursos($_SESSION['usuarioID']);
+      session_start();
 
-        if ($cursos) {
-            http_response_code(200);
-            echo json_encode($cursos);
-        }
-        else{
-          http_response_code(400);
-          echo 'Não foi possível carregar as categorias';
-        }
+      $cursos = CursoModel::getCursoUserId($_SESSION['userId']);
+
+      if ($cursos) {
+          $rp = new ResponseHandler(200, 'ok', ['cursos' => $cursos]);
+      }
+      else{
+        $rp = new ResponseHandler(400, 'Não foi possivel');
+      }
+
+      $rp->printJson();
     }
 
     public static function getAula($id)
