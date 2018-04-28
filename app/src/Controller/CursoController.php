@@ -1,12 +1,13 @@
 <?php
 namespace IntecPhp\Controller;
 use IntecPhp\Model\CursoModel;
+use IntecPhp\Model\AulaModel;
 use IntecPhp\Model\ResponseHandler;
 
 class CursoController
 {
 
-    function cadastrar() {
+    function cadastrarCurso() {
       session_start();
       $id ='';
       $nomeCurso = filter_input(INPUT_POST, "nomeCurso");
@@ -41,20 +42,41 @@ class CursoController
 
       $rp->printJson();
     }
+    // AULA
+    function cadastrarAula() {
+      session_start();
+      $id ='';
+      $nomeAula = filter_input(INPUT_POST, "nomeAula");
+      $youTube = filter_input(INPUT_POST, "aulaYoutube");
+      $descricao = filter_input(INPUT_POST, "descricao");
+      $idCurso = filter_input(INPUT_POST, "idCurso");
 
-    public static function getAula($id)
-    {
-        $aulas = CursoDAO::getAula($id);
+      $aula = new AulaModel($id, $nomeAula, $youTube, $descricao, $idCurso);
 
-        if ($aulas) {
-            http_response_code(200);
-            echo json_encode($aulas);
-        }
-        else{
-          http_response_code(400);
-          echo 'Não foi possível carregar as aulas';
-        }
+      if ($aula->getNomeAula() != "" ) {
+
+          $id = $aula->create();
+          $rp = new ResponseHandler(200, 'Aula cadastrada com sucesso');
+
+      } else {
+          $rp = new ResponseHandler(400, 'Faltam dados!');
+      }
+      $rp->printJson();
     }
+
+    // public static function getAula($id)
+    // {
+    //     $aulas = CursoDAO::getAula($id);
+    //
+    //     if ($aulas) {
+    //         http_response_code(200);
+    //         echo json_encode($aulas);
+    //     }
+    //     else{
+    //       http_response_code(400);
+    //       echo 'Não foi possível carregar as aulas';
+    //     }
+    // }
 }
 
 
