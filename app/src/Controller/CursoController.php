@@ -34,7 +34,7 @@ class CursoController
       $cursos = CursoModel::getCursoUserId($_SESSION['userId']);
 
       if ($cursos) {
-          $rp = new ResponseHandler(200, 'ok', ['cursos' => $cursos]);
+          $rp = new ResponseHandler(200, 'ok',  $cursos);
       }
       else{
         $rp = new ResponseHandler(400, 'Não foi possivel');

@@ -1,3 +1,5 @@
+var Vue = require("vue/dist/vue.common");
+
 $(document).ready(function () {
   getCurso();
   $("#btnCadastraCurso").click(function () {
@@ -42,19 +44,44 @@ $(document).ready(function () {
 
 });
 
+var veData = {
+    cursos: []
+}
 
-function getCurso()
-{
-  $.post({
-		dataType: 'json',	//Definimos o tipo de retorno
-		url: '/prof-get-curso',//Definindo o arquivo onde serão buscados os dados
-		success: function(dados){
+// imgSrc: '/img/portfolio/dreams-preview.png',
+//     imgAlt: 'Foto dos sonhos',
+//     title: 'Thumbnail label',
+//     comment: 'Esta é a foto feliz de um momento inesquecivel da história da Disney'
 
-			for(var i=0;dados.length>i;i++){
-				$('#cursos').append('<li>'+dados[i].nomeCurso+'<ul id="aula"'+ dados[i].id +'></ul></li>');
-			}
 
-		}
-	});
+var vueExampleApp = new Vue({
+    el: "#cursos-prof",
+    data: veData,
+    methods: {
+        removecurso: function(cursoId){
+            if(confirm('Tem certeza que deseja remover este curso: ' + cursoId)) {
+                // requisição ajax para solicitar remoção
+                var index = null;
 
+                this.cursos.find(function(t, i){
+                    if(t.id == cursoId) {
+                        index = i;
+                        return true;
+                    }
+                });
+                if(index !== null) {
+                    this.cursos.splice(index, 1);
+                }
+            }
+        }
+    }
+});
+
+
+function getCurso() {
+    $.get('/prof-get-curso', null, null, 'json').then(function(response){
+        var d = response.data;
+        console.log('resp', d);
+        veData.cursos = d;
+    });
 }
