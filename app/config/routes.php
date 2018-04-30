@@ -16,6 +16,15 @@ return [
         },
     ],
     [
+        'pattern' => '/aluno',
+        'callback' => function() {
+            $layout = new Layout();
+            $layout
+            ->addScript('/js/home-professor.min.js')
+            ->render('aluno/aluno');
+        },
+    ],
+    [
         'pattern' => '/professor',
         'callback' => function() {
             $layout = new Layout();
@@ -87,13 +96,20 @@ return [
      [
          'pattern' => '/cadastrar-curso',
          'callback' => function() {
-             Controller\CursoController::cadastrar();
+             Controller\CursoController::cadastrarCurso();
          }
      ],
      [
-         'pattern' => '/get-curso',
+         'pattern' => '/prof-get-curso',
          'callback' => function() {
              Controller\CursoController::getCurso();
+         }
+     ],
+     //Aula
+     [
+         'pattern' => '/cadastrar-aula',
+         'callback' => function() {
+             Controller\CursoController::cadastrarAula();
          }
      ],
     [

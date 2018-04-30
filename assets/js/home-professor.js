@@ -47,7 +47,7 @@ function getCurso()
 {
   $.post({
 		dataType: 'json',	//Definimos o tipo de retorno
-		url: '/get-curso',//Definindo o arquivo onde serão buscados os dados
+		url: '/prof-get-curso',//Definindo o arquivo onde serão buscados os dados
 		success: function(dados){
 
 			for(var i=0;dados.length>i;i++){

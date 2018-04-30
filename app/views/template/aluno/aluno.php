@@ -97,9 +97,6 @@
             <div class="modal-body">
                 <div id="dvForm" class="text-center">
                     <ul>
-                        <div style="display: none;">
-                            <input class="input-lg" type="text" value='<?php echo $_SESSION["usuarioID"] ?>' id="idProfessor" />
-                        </div>
                         <br>
                         <div>
                             <input class="input-lg" type="text" placeholder="Nome do Curso" id="nomeCurso" />

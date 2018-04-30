@@ -13,7 +13,7 @@ class Curso {
 
       $conn = DbHandler::getInstance();
 
-      $stm = $conn->query("insert into curso (nomeCurso, descricao, idProfessor) values (?, ?, ?)", [
+      $stm = $conn->query("insert into curso (nome, descricao, idProfessor) values (?, ?, ?)", [
           $nomeCurso, $descricao, $idProfessor
       ]);
 
