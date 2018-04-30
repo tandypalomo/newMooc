@@ -1,10 +1,12 @@
-<div class="col-md-6 text-left"><p>MOOC ACESSIBILIDADE</p></div>
-<div class="text-right">
-    <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modalLogin">Login</button>
-    <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modalCadastro">Cadastrar</button>
+<div class= "row">
+  <div class="col-md-8"><p>MOOC ACESSIBILIDADE</p></div>
+  <div class="col-md-2 col-md-offset-2">
+      <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modalLogin">Login</button>
+      <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modalCadastro">Cadastrar</button>
+  </div>
 </div>
 
-  <div class="text-center">
+  <div class="col-md-8 col-md-offset-2">
     <img src="img/logo.jpg">
   </div>
 
@@ -12,7 +14,6 @@
 <!-- Modal Login-->
 <div id="modalLogin" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -22,19 +23,26 @@
                 </div>
             </div>
             <div class="modal-body">
-                <div id="dvForm" class="text-center">
-                    <ul>
-                        <input class="input-lg" type="text" placeholder="Email" id="emailLogin" />
-                        <br>
-                        <input class="input-lg" type="password" placeholder="Senha" id="senhaLogin" />
 
-                        <div class="texto" id="resultado"></div>
-                    </ul>
+                <div id="dvForm" class="col-md-12 text-center">
+                  <div>
+                    <input class="input-lg" type="text" placeholder="Email" id="emailLogin" />
+                  </div>
+                  <br>
+                  <div>
+                    <input class="input-lg" type="password" placeholder="Senha" id="senhaLogin" />
+                  </div>
+                  <br>
                 </div>
+
             </div>
-            <div class="text-center modal-footer">
-                  <button class="btn-primary btn-lg" type="button" id="btnLogin">Login</button>
+
+            <div class="modal-footer">
+              <div class=" col-md-12 text-center">
+                <button class="btn-primary btn-lg" type="button" id="btnLogin">Login</button>
+              </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -82,14 +90,11 @@
                     </div>
                     <br>
 
-                    <div class="texto" id="resultado"></div>
-
-                    <button class="btn-primary btn-lg" type="button" id="btnCadastrar">Cadastrar</button>
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="text-center">
-
+                  <button class="btn-primary btn-lg" type="button" id="btnCadastrar">Cadastrar</button>
                 </div>
             </div>
         </div>
