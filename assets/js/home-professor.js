@@ -16,6 +16,7 @@ $(document).ready(function () {
         data: dados,
         success: function (result) {
           alert("Curso cadastrado com sucesso!");
+          getCurso();
           $("#modal-cadastro-curso").modal("hide");
           $("#modal-cadastro-curso").find('input:text').val('');
         },
@@ -50,7 +51,7 @@ var veData = {
     cursos: []
 }
 
-var vueExampleApp = new Vue({
+var vueCurso = new Vue({
     el: "#cursos-prof",
     data: veData,
     methods: {
