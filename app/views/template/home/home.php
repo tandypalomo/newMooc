@@ -1,6 +1,6 @@
 <div class= "row">
-  <div class="col-md-8"><p>MOOC ACESSIBILIDADE</p></div>
-  <div class="col-md-2 col-md-offset-2">
+  <div class="col-lg-8"><p>MOOC ACESSIBILIDADE</p></div>
+  <div class="col-lg-2 col-lg-offset-2">
       <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modalLogin">Login</button>
       <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modalCadastro">Cadastrar</button>
   </div>

@@ -11,13 +11,15 @@ class CursoModel
   private $id;
   private $nomeCurso;
   private $descricao;
+  private $youTube;
   private $idProfessor;
 
-  public function __construct($id = '', $nomeCurso, $descricao, $idProfessor)
+  public function __construct($id = '', $nomeCurso, $descricao, $youTube, $idProfessor)
     {
         $this->id = $id;
         $this->nomeCurso = $nomeCurso;
         $this->descricao = $descricao;
+        $this->youTube = $youTube;
         $this->idProfessor = $idProfessor;
     }
 
@@ -27,7 +29,7 @@ class CursoModel
 
     public function create()
     {
-      $cId = Curso::createCurso($this->nomeCurso, $this->descricao, $this->idProfessor);
+      return Curso::createCurso($this->nomeCurso, $this->descricao, $this->youTube, $this->idProfessor);
     }
 
 

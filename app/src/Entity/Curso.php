@@ -9,12 +9,12 @@ class Curso {
 
   }
 
-    function createCurso($nomeCurso, $descricao, $idProfessor) {
+    function createCurso($nomeCurso, $descricao, $youTube, $idProfessor) {
 
       $conn = DbHandler::getInstance();
 
-      $stm = $conn->query("insert into curso (nome, descricao, idProfessor) values (?, ?, ?)", [
-          $nomeCurso, $descricao, $idProfessor
+      $stm = $conn->query("insert into curso (nome, descricao, video, idProfessor) values (?, ?, ?, ?)", [
+          $nomeCurso, $descricao, $youTube, $idProfessor
       ]);
 
       if($stm) {

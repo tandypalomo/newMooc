@@ -12,14 +12,19 @@ class CursoController
       $id ='';
       $nomeCurso = filter_input(INPUT_POST, "nomeCurso");
       $descricao = filter_input(INPUT_POST, "desc");
+      $youTube = filter_input(INPUT_POST, "youTube");
       $idProfessor = $_SESSION["userId"];
 
-      $curso = new CursoModel($id, $nomeCurso, $descricao, $idProfessor);
+      $curso = new CursoModel($id, $nomeCurso, $descricao, $youTube, $idProfessor);
 
         if ($curso->getNomeCurso() != "" ) {
 
             $id = $curso->create();
-            $rp = new ResponseHandler(200, 'Curso cadastrado com sucesso');
+            if($id){
+              $rp = new ResponseHandler(200, 'Curso cadastrado com sucesso');
+            } else {
+              $rp = new ResponseHandler(400, 'Ocorreu um erro!');
+            }
 
         } else {
             $rp = new ResponseHandler(400, 'Faltam dados!');

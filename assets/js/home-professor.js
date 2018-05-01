@@ -2,12 +2,12 @@ var Vue = require("vue/dist/vue.common");
 
 $(document).ready(function () {
   getCurso();
-  $("#btnCadastraCurso").click(function () {
+  $("#btnCadastrar").click(function () {
 
     var dados = {
         nomeCurso: $("#nomeCurso").val(),
         desc: $("#descricao").val(),
-        idProfessor: $('#idProfessor').val()
+        youTube: $('#youTube').val()
     };
 
     $.post({
@@ -15,11 +15,13 @@ $(document).ready(function () {
         dataType: "json",
         data: dados,
         success: function (result) {
-          alert("oi");
-          $("#modalCadastro").modal("hide")
+          alert("Curso cadastrado com sucesso!");
+          $("#modal-cadastro-curso").modal("hide");
+          $("#modal-cadastro-curso").find('input:text').val('');
         },
         error: function (result) {
             alert("Ocorreu um erro!");
+            $("#modal-cadastro-curso").modal("hide");
             console.log(result);
         }
     });
@@ -47,12 +49,6 @@ $(document).ready(function () {
 var veData = {
     cursos: []
 }
-
-// imgSrc: '/img/portfolio/dreams-preview.png',
-//     imgAlt: 'Foto dos sonhos',
-//     title: 'Thumbnail label',
-//     comment: 'Esta é a foto feliz de um momento inesquecivel da história da Disney'
-
 
 var vueExampleApp = new Vue({
     el: "#cursos-prof",
