@@ -11,7 +11,7 @@
 <hr />
 
 <div class="row" id="cursos-prof">
-    <div class="col-md-4 col-sm-6 col-xs-12" v-for="curso in cursos">
+    <div class="col-md-4 col-sm-6 col-xs-12 text-center" v-for="curso in cursos">
         <div class="thumbnail">
             <img v-bind:src="curso.imgSrc" v-bind:alt="curso.imgAlt">
             <div class="caption">

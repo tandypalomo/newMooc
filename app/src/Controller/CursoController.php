@@ -15,6 +15,12 @@ class CursoController
       $youTube = filter_input(INPUT_POST, "youTube");
       $idProfessor = $_SESSION["userId"];
 
+      $yT = explode('=', $youTube);
+      if($yT[0] == 'https://www.youtube.com/watch?v'){
+        
+        $youTube = 'https://www.youtube.com/embed/' . $yT[1];
+      }
+
       $curso = new CursoModel($id, $nomeCurso, $descricao, $youTube, $idProfessor);
 
         if ($curso->getNomeCurso() != "" ) {
