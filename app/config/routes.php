@@ -105,6 +105,12 @@ return [
              Controller\CursoController::getCurso();
          }
      ],
+     [
+         'pattern' => '/excluir-curso',
+         'callback' => function() {
+             Controller\CursoController::deleteCurso();
+         }
+     ],
      //Aula
      [
          'pattern' => '/cadastrar-aula',

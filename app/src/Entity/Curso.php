@@ -52,4 +52,19 @@ class Curso {
       return false;
     }
 
+    public static function deleteCurso($id)
+    {
+      $conn = DbHandler::getInstance();
+
+      $stm = $conn->query('delete from curso where id=?', [ $id
+                ]);
+
+      if($stm) {
+
+        return $stm->rowCount();
+
+      }
+      return -1;
+    }
+
 }
