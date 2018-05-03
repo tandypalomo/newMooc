@@ -27,3 +27,12 @@ CREATE TABLE aula ( id int(11) not null auto_increment,
 );
 
 alter table curso add video varchar(128);
+
+create table usuario_x_curso(
+  id int(11),
+  idUsuario int(11),
+  idCurso int(11),
+  primary key(id),
+  FOREIGN KEY (idUsuario) REFERENCES usuario(id),
+  FOREIGN KEY (idCurso) REFERENCES curso(id)
+);

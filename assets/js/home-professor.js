@@ -57,7 +57,24 @@ var vueCurso = new Vue({
     methods: {
         removecurso: function(cursoId){
             if(confirm('Tem certeza que deseja remover este curso: ' + cursoId)) {
-                // requisição ajax para solicitar remoção
+
+              var dados = {
+                id: cursoId
+              };
+
+              $.post({
+                  url: "/excluir-curso",
+                  dataType: "json",
+                  data: dados,
+                  success: function (result) {
+                    alert("Curso excluido com sucesso!");
+
+                  },
+                  error: function (result) {
+                      alert("Ocorreu um erro!");
+                      console.log(result);
+                  }
+              });
                 var index = null;
 
                 this.cursos.find(function(t, i){

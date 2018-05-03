@@ -3,6 +3,7 @@ namespace IntecPhp\Controller;
 use IntecPhp\Model\CursoModel;
 use IntecPhp\Model\AulaModel;
 use IntecPhp\Model\ResponseHandler;
+use IntecPhp\Entity\Curso;
 
 class CursoController
 {
@@ -17,7 +18,7 @@ class CursoController
 
       $yT = explode('=', $youTube);
       if($yT[0] == 'https://www.youtube.com/watch?v'){
-        
+
         $youTube = 'https://www.youtube.com/embed/' . $yT[1];
       }
 
@@ -46,8 +47,22 @@ class CursoController
 
       if ($cursos) {
           $rp = new ResponseHandler(200, 'ok',  $cursos);
+      } else {
+        $rp = new ResponseHandler(400, 'Não foi possivel');
       }
-      else{
+
+      $rp->printJson();
+    }
+
+    public static function deleteCurso()
+    {
+      $id = filter_input(INPUT_POST, 'id');
+
+      $cursos = Curso::deleteCurso($id);
+
+      if ($cursos > 0) {
+          $rp = new ResponseHandler(200, 'Excluido com sucesso!');
+      } else {
         $rp = new ResponseHandler(400, 'Não foi possivel');
       }
 
