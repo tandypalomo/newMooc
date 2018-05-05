@@ -37,5 +37,17 @@ class Aula {
         return false;
     }
 
+    public static function getAula($idCurso)
+    {
+        $conn = DbHandler::getInstance();
+        $stm = $conn->query('select * from aula where idCurso=?', [ $idCurso
+                  ]);
+
+        if($a = $stm->fetchAll()) {
+            return $a;
+        }
+        return false;
+    }
+
 
 }
