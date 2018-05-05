@@ -74,7 +74,7 @@
 
 <!-- Modal CADASTRO CURSO -->
 <div id="modal-aulas" class="modal fade" role="dialog">
-   <div class="modal-dialog">
+   <div class="modal-dialog modal-lg">
 
        <!-- Modal content-->
        <div class="modal-content">
@@ -87,9 +87,9 @@
            </div>
 
            <div class="col-md-12 text-center">
-
+             <hr>
              <div class="row" id="aula-curso">
-                 <div class="col-md-4 col-sm-6 col-xs-12 text-center" v-for="aula in aulas">
+                 <div class="col-md-6 col-sm-6 col-xs-12 text-center" v-for="aula in aulas">
                      <div class="thumbnail">
 
                          <div class="caption">
@@ -107,7 +107,9 @@
 
            </div>
            <div class="modal-footer">
-
+             <div class="col-md-12 col-xs-12 text-center">
+               <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modal-cadastro-curso">Novo Aula</button>
+             </div>
            </div>
        </div>
    </div>

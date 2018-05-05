@@ -93,7 +93,7 @@ class CursoController
 
     public static function getAula( )
     {
-        $idCurso = filter_input(INPUT_POST, "idCurso");
+        $idCurso = filter_input(INPUT_POST, "id");
         $aulas = Aula::getAula($idCurso);
 
         if ($aulas) {

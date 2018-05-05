@@ -47,13 +47,13 @@ $(document).ready(function () {
 
 });
 
-var veData = {
+var veDataCurso = {
     cursos: []
 }
 
 var vueCurso = new Vue({
     el: "#cursos-prof",
-    data: veData,
+    data: veDataCurso,
     methods: {
         removecurso: function(cursoId){
             if(confirm('Tem certeza que deseja remover este curso: ' + cursoId)) {
@@ -90,18 +90,65 @@ var vueCurso = new Vue({
         },
 
         seecurso: function(cursoId){
+          getAulas(cursoId);
           $('#modal-aulas').modal('show');
         }
 
     }
 });
 
+var veDataAula = {
+    aulas: []
+}
+
+var vueAula = new Vue({
+    el: "#aula-curso",
+    data: veDataAula,
+    methods: {
+        removeaula: function(aulaId){
+            if(confirm('Tem certeza que deseja remover este curso: ' + aulaId)) {
+
+              var dados = {
+                id: aulaId
+              };
+
+              $.post({
+                  url: "/excluir-curso",
+                  dataType: "json",
+                  data: dados,
+                  success: function (result) {
+                    alert("Curso excluido com sucesso!");
+
+                  },
+                  error: function (result) {
+                      alert("Ocorreu um erro!");
+                      console.log(result);
+                  }
+              });
+                var index = null;
+
+                this.cursos.find(function(t, i){
+                    if(t.id == aulaId) {
+                        index = i;
+                        return true;
+                    }
+                });
+                if(index !== null) {
+                    this.aula.splice(index, 1);
+                }
+            }
+        },
+
+    }
+});
+
+
 
 function getCurso() {
     $.get('/prof-get-curso', null, null, 'json').then(function(response){
         var d = response.data;
         console.log('resp', d);
-        veData.cursos = d;
+        veDataCurso.cursos = d;
     });
 }
 
@@ -110,15 +157,18 @@ function getAulas(idCurso) {
     id : idCurso
   }
   $.post({
-      url: "/get-aulas",
+      url: "/get-aula",
       dataType: "json",
       data: dados,
-      success: function (result) {
+      success: function (response) {
         // alert("Curso excluido com sucesso!");
+        var d = response.data;
+        console.log(d);
+        veDataAula.aulas = d;
 
       },
-      error: function (result) {
-          // alert("Ocorreu um erro!");
+      error: function (response) {
+          alert("Ocorreu um erro!");
           // console.log(result);
       }
   });
