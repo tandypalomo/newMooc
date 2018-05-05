@@ -19,7 +19,7 @@
                 <iframe v-bind:src="curso.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 <p>{{curso.descricao}}</p>
                 <p>
-                    <button class="btn btn-primary" role="button">Ver</button>
+                    <button class="btn btn-primary" role="button" v-on:click="seecurso(curso.id)">Ver</button>
                     <button class="btn btn-danger" role="button" v-on:click="removecurso(curso.id)">Remover</button>
                 </p>
             </div>
@@ -68,4 +68,47 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- MODAL AULAS -->
+
+<!-- Modal CADASTRO CURSO -->
+<div id="modal-aulas" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <div class="text-center">
+
+                   <h1>Aulas</h1>
+               </div>
+           </div>
+
+           <div class="col-md-12 text-center">
+
+             <div class="row" id="aula-curso">
+                 <div class="col-md-4 col-sm-6 col-xs-12 text-center" v-for="aula in aulas">
+                     <div class="thumbnail">
+
+                         <div class="caption">
+                             <h3>{{aula.nome}}</h3>
+                             <iframe v-bind:src="aula.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                             <p>{{aula.descricao}}</p>
+                             <p>
+                                 <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.id)">Ver</button>
+                                 <button class="btn btn-danger" role="button" v-on:click="removeaula(aula.id)">Remover</button>
+                             </p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+           </div>
+           <div class="modal-footer">
+
+           </div>
+       </div>
+   </div>
 </div>

@@ -87,7 +87,12 @@ var vueCurso = new Vue({
                     this.cursos.splice(index, 1);
                 }
             }
+        },
+
+        seecurso: function(cursoId){
+          $('#modal-aulas').modal('show');
         }
+
     }
 });
 
@@ -98,4 +103,23 @@ function getCurso() {
         console.log('resp', d);
         veData.cursos = d;
     });
+}
+
+function getAulas(idCurso) {
+  var dados = {
+    id : idCurso
+  }
+  $.post({
+      url: "/get-aulas",
+      dataType: "json",
+      data: dados,
+      success: function (result) {
+        // alert("Curso excluido com sucesso!");
+
+      },
+      error: function (result) {
+          // alert("Ocorreu um erro!");
+          // console.log(result);
+      }
+  });
 }

@@ -4,6 +4,7 @@ use IntecPhp\Model\CursoModel;
 use IntecPhp\Model\AulaModel;
 use IntecPhp\Model\ResponseHandler;
 use IntecPhp\Entity\Curso;
+use IntecPhp\Entity\Aula;
 
 class CursoController
 {
@@ -90,19 +91,21 @@ class CursoController
       $rp->printJson();
     }
 
-    // public static function getAula($id)
-    // {
-    //     $aulas = CursoDAO::getAula($id);
-    //
-    //     if ($aulas) {
-    //         http_response_code(200);
-    //         echo json_encode($aulas);
-    //     }
-    //     else{
-    //       http_response_code(400);
-    //       echo 'Não foi possível carregar as aulas';
-    //     }
-    // }
+    public static function getAula( )
+    {
+        $idCurso = filter_input(INPUT_POST, "idCurso");
+        $aulas = Aula::getAula($idCurso);
+
+        if ($aulas) {
+          $rp = new ResponseHandler(200, 'ok',  $aulas);
+        }
+        else{
+          $rp = new ResponseHandler(400, 'Faltam dados!');
+        }
+
+        $rp->printJson();
+    }
+
 }
 
 

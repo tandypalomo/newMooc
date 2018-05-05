@@ -118,6 +118,12 @@ return [
              Controller\CursoController::cadastrarAula();
          }
      ],
+     [
+         'pattern' => '/get-aula',
+         'callback' => function() {
+             Controller\CursoController::getAula();
+         }
+     ],
     [
         'pattern' => '/user-area',
         'middlewares' => [
