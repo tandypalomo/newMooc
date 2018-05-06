@@ -28,7 +28,10 @@ class CursoController
         if ($curso->getNomeCurso() != "" ) {
 
             $id = $curso->create();
+
             if($id){
+              $aula = new AulaModel('', 'Aula Introdutória', $youTube, '', $id);
+              $idAula = $aula->create();
               $rp = new ResponseHandler(200, 'Curso cadastrado com sucesso');
             } else {
               $rp = new ResponseHandler(400, 'Ocorreu um erro!');
