@@ -35,7 +35,7 @@ $(document).ready(function () {
       var dados = {
           idCurso: $('#idCurso').val(),
           nomeAula: $("#nomeAula").val(),
-          desc: $("#descricao").val(),
+          descricao: $("#descricaoAula").val(),
           youTube: $('#aulaYouTube').val()
       };
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
             getAulas(result.data.id);
             $("#modal-cadastra-aula").modal("hide");
             $("#nomeAula").val('');
-            $("#descricao").val('');
+            $("#descricaoAula").val('');
             $("#aulaYouTube").val('');
 
           },

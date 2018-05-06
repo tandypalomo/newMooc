@@ -142,7 +142,7 @@
                    </div>
                    <br>
                    <div>
-                       <input class="input-lg" type="text" placeholder="Descrição" required="" id="descricao" />
+                       <input class="input-lg" type="text" placeholder="Descrição" required="" id="descricaoAula" />
                    </div>
                    <br>
 
