@@ -2,6 +2,7 @@ var Vue = require("vue/dist/vue.common");
 
 $(document).ready(function () {
   getCurso();
+
   $("#btnCadastrar").click(function () {
 
     var dados = {
@@ -25,9 +26,41 @@ $(document).ready(function () {
             $("#modal-cadastro-curso").modal("hide");
             console.log(result);
         }
+      });
+
     });
 
-  });
+    $("#btnCadastrarAula").click(function () {
+
+      var dados = {
+          idCurso: $('#idCurso').val(),
+          nomeAula: $("#nomeAula").val(),
+          desc: $("#descricao").val(),
+          youTube: $('#aulaYouTube').val()
+      };
+
+      $.post({
+          url: "/cadastrar-aula",
+          dataType: "json",
+          data: dados,
+          success: function (result) {
+            console.log(result);
+            alert("Curso cadastrado com sucesso!");
+            getAulas(result.data.id);
+            $("#modal-cadastra-aula").modal("hide");
+            $("#nomeAula").val('');
+            $("#descricao").val('');
+            $("#aulaYouTube").val('');
+
+          },
+          error: function (result) {
+              alert("Ocorreu um erro!");
+              $("#modal-cadastro-aula").modal("hide");
+              console.log(result);
+          }
+      });
+
+    });
 
     $('#sair').click(function(){
 
@@ -92,6 +125,7 @@ var vueCurso = new Vue({
         seecurso: function(cursoId){
           getAulas(cursoId);
           $('#modal-aulas').modal('show');
+          $('#idCurso').val(cursoId);
         }
 
     }

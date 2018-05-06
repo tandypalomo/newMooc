@@ -77,16 +77,23 @@ class CursoController
       session_start();
       $id ='';
       $nomeAula = filter_input(INPUT_POST, "nomeAula");
-      $youTube = filter_input(INPUT_POST, "aulaYoutube");
+      $youTube = filter_input(INPUT_POST, "youTube");
       $descricao = filter_input(INPUT_POST, "descricao");
       $idCurso = filter_input(INPUT_POST, "idCurso");
+
+      $yT = explode('=', $youTube);
+      if($yT[0] == 'https://www.youtube.com/watch?v'){
+
+        $youTube = 'https://www.youtube.com/embed/' . $yT[1];
+
+      }
 
       $aula = new AulaModel($id, $nomeAula, $youTube, $descricao, $idCurso);
 
       if ($aula->getNomeAula() != "" ) {
 
           $id = $aula->create();
-          $rp = new ResponseHandler(200, 'Aula cadastrada com sucesso');
+          $rp = new ResponseHandler(200, 'Aula cadastrada com sucesso', ['id' => $idCurso]);
 
       } else {
           $rp = new ResponseHandler(400, 'Faltam dados!');
@@ -94,7 +101,7 @@ class CursoController
       $rp->printJson();
     }
 
-    public static function getAula( )
+    public static function getAula()
     {
         $idCurso = filter_input(INPUT_POST, "id");
         $aulas = Aula::getAula($idCurso);
