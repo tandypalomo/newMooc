@@ -27,6 +27,10 @@ class CursoModel
       return Curso::getCursoUserId($uId);
     }
 
+    public function getAllCurso() {
+      return Curso::getAllCurso();
+    }
+
     public function create()
     {
       return Curso::createCurso($this->nomeCurso, $this->descricao, $this->youTube, $this->idProfessor);

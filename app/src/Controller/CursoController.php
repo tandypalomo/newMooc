@@ -58,6 +58,21 @@ class CursoController
       $rp->printJson();
     }
 
+    public static function getAllCurso()
+    {
+      session_start();
+
+      $cursos = CursoModel::getAllCurso();
+
+      if ($cursos) {
+          $rp = new ResponseHandler(200, 'ok',  $cursos);
+      } else {
+        $rp = new ResponseHandler(400, 'Não foi possivel');
+      }
+
+      $rp->printJson();
+    }
+
     public static function deleteCurso()
     {
       $id = filter_input(INPUT_POST, 'id');
