@@ -52,6 +52,20 @@ class Curso {
       return false;
     }
 
+    public static function getAllCurso()
+    {
+      $conn = DbHandler::getInstance();
+
+      $stm = $conn->query('select * from curso');
+
+      if($stm) {
+        $c = $stm->fetchAll();
+        return $c;
+
+      }
+      return false;
+    }
+
     public static function deleteCurso($id)
     {
       $conn = DbHandler::getInstance();

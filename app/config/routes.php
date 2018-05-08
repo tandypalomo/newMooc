@@ -20,7 +20,7 @@ return [
         'callback' => function() {
             $layout = new Layout();
             $layout
-            ->addScript('/js/home-professor.min.js')
+            ->addScript('/js/home-aluno.min.js')
             ->render('aluno/aluno');
         },
     ],
@@ -105,6 +105,13 @@ return [
              Controller\CursoController::getCurso();
          }
      ],
+     [
+         'pattern' => '/get-todos-cursos',
+         'callback' => function() {
+             Controller\CursoController::getAllCurso();
+         }
+     ],
+
      [
          'pattern' => '/excluir-curso',
          'callback' => function() {
