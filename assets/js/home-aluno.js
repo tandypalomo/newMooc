@@ -1,6 +1,8 @@
+var Vue = require("vue/dist/vue.common");
+
 $(document).ready(function () {
-  // getCursos();
-  getUserCursos();
+  getTodosCursos();
+  // getUserCursos();
 
     $('#sair').click(function(){
 
@@ -20,19 +22,25 @@ $(document).ready(function () {
 
 });
 
-function getCurso()
+var veDataTodosCursos = {
+    todos: []
+}
+
+var vueTodosCurso = new Vue({
+  el: "#todos-cursos",
+  data: veDataTodosCursos,
+  methods: {
+
+  }
+});
+
+function getTodosCursos()
 {
-  $.post({
-		dataType: 'json',	//Definimos o tipo de retorno
-		url: '/get-curso',//Definindo o arquivo onde serão buscados os dados
-		success: function(dados){
-
-			for(var i=0;dados.length>i;i++){
-				$('#cursos').append('<li>'+dados[i].nomeCurso+'<ul id="aula"'+ dados[i].id +'></ul></li>');
-			}
-
-		}
-	});
+  $.get('/get-todos-cursos', null, null, 'json').then(function(response){
+      var d = response.data;
+      console.log('resp', d);
+      veDataTodosCursos.todos = d;
+  });
 }
 
 function getUserCursos()

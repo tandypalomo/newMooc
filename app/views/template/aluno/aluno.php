@@ -87,17 +87,17 @@
 
            <div class="col-md-12 text-center">
              <hr>
-             <div class="row" id="novos-cursos">
+             <div class="row" id="todos-cursos">
                  <div class="col-md-6 col-sm-6 col-xs-12 text-center" v-for="todo in todos">
                      <div class="thumbnail">
 
                          <div class="caption">
-                             <h3>{{novoCurso.nome}}</h3>
+                             <h3>{{todo.nome}}</h3>
                              <iframe v-bind:src="todo.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                              <p>{{todo.descricao}}</p>
-                             <!-- <p>
-                                 <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.id)">Ver</button>
-                             </p> -->
+                             <p>
+                                 <button class="btn btn-primary" role="button" v-on:click="inscrever(todo.id)">Increver</button>
+                             </p>
                          </div>
                      </div>
                  </div>
