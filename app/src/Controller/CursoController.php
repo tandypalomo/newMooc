@@ -143,6 +143,22 @@ class CursoController
 
     }
 
+    public static function getCursoAluno( )
+    {
+      session_start();
+      $userId = $_SESSION['userId'];
+
+      $cursos = Curso::getCursoAluno($userId);
+
+      if ($cursos) {
+          $rp = new ResponseHandler(200, 'ok',  $cursos);
+      } else {
+        $rp = new ResponseHandler(400, 'Não foi possivel');
+      }
+
+      $rp->printJson();
+    }
+
 }
 
 

@@ -27,6 +27,7 @@ CREATE TABLE aula ( id int(11) not null auto_increment,
 );
 
 alter table curso add video varchar(128);
+alter table curso add video_libras varchar(128);
 
 create table usuario_x_curso(
   id int(11) not null auto_increment,

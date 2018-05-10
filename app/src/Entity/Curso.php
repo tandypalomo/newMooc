@@ -81,4 +81,22 @@ class Curso {
       return -1;
     }
 
+    public static function getCursoAluno($idUser)
+    {
+        $conn = DbHandler::getInstance();
+
+        $stm = $conn->query('select *  from usuario_x_curso left join curso on usuario_x_curso.idCurso = curso.id where usuario_x_curso.idUsuario = ?
+              ', [ $idUser
+                  ]);
+
+        if($stm) {
+          $c = $stm->fetchAll();
+          return $c;
+
+        }
+        return false;
+
+    }
+
+
 }

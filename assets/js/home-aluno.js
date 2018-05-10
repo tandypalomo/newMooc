@@ -2,7 +2,7 @@ var Vue = require("vue/dist/vue.common");
 
 $(document).ready(function () {
   getTodosCursos();
-  // getUserCursos();
+  getUserCursos();
 
     $('#sair').click(function(){
 
@@ -40,6 +40,7 @@ var vueTodosCurso = new Vue({
           data: dados,
           success: function (result) {
             alert('cadastrado');
+            getUserCursos();
           },
           error: function (result) {
               alert("Ocorreu um erro!");
@@ -58,17 +59,47 @@ function getTodosCursos()
   });
 }
 
-function getUserCursos()
-{
-  $.post({
-		dataType: 'json',	//Definimos o tipo de retorno
-		url: '/get-user-cursos',//Definindo o arquivo onde serão buscados os dados
-		success: function(dados){
+var veDataCurso = {
+    cursos: []
+}
 
-			for(var i=0;dados.length>i;i++){
-				$('#cursos').append('<li>'+dados[i].nomeCurso+'<ul id="aula"'+ dados[i].id +'></ul></li>');
-			}
+var vueCurso = new Vue({
+    el: "#cursos-prof",
+    data: veDataCurso,
+    methods: {
+        removecurso: function(cursoId){
+            if(confirm('Tem certeza que deseja remover este curso: ' + cursoId)) {
 
-		}
-	});
+              var dados = {
+                id: cursoId
+              };
+
+                var index = null;
+
+                this.cursos.find(function(t, i){
+                    if(t.id == cursoId) {
+                        index = i;
+                        return true;
+                    }
+                });
+                if(index !== null) {
+                    this.cursos.splice(index, 1);
+                }
+            }
+        },
+
+        seecurso: function(cursoId){
+          getAulas(cursoId);
+          $('#modal-aulas').modal('show');
+        }
+
+    }
+});
+
+function getUserCursos() {
+  $.get('/aluno-get-cursos', null, null, 'json').then(function(response){
+      var d = response.data;
+      console.log('resp', d);
+      veDataCurso.cursos = d;
+  });
 }

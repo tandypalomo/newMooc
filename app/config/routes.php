@@ -123,6 +123,12 @@ return [
              Controller\CursoController::incricaoCurso();
          }
      ],
+     [
+         'pattern' => '/aluno-get-cursos',
+         'callback' => function() {
+             Controller\CursoController::getCursoAluno();
+         }
+     ],
      //Aula
      [
          'pattern' => '/cadastrar-aula',
