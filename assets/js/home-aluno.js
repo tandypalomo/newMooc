@@ -30,7 +30,22 @@ var vueTodosCurso = new Vue({
   el: "#todos-cursos",
   data: veDataTodosCursos,
   methods: {
-
+    inscrever: function(cursoId){
+      var dados = {
+        id : cursoId
+      }
+      $.post({
+          url: "/aluno-inscricao",
+          dataType: "json",
+          data: dados,
+          success: function (result) {
+            alert('cadastrado');
+          },
+          error: function (result) {
+              alert("Ocorreu um erro!");
+          }
+      });
+    }
   }
 });
 
