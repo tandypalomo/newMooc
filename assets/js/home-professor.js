@@ -97,6 +97,14 @@ var vueCurso = new Vue({
     }
 });
 
+function getCurso() {
+    $.get('/prof-get-curso', null, null, 'json').then(function(response){
+        var d = response.data;
+        console.log('resp', d);
+        veDataCurso.cursos = d;
+    });
+}
+
 var veDataAula = {
     aulas: []
 }
@@ -142,15 +150,6 @@ var vueAula = new Vue({
     }
 });
 
-
-
-function getCurso() {
-    $.get('/prof-get-curso', null, null, 'json').then(function(response){
-        var d = response.data;
-        console.log('resp', d);
-        veDataCurso.cursos = d;
-    });
-}
 
 function getAulas(idCurso) {
   var dados = {
