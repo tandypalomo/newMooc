@@ -111,11 +111,16 @@ return [
              Controller\CursoController::getAllCurso();
          }
      ],
-
      [
          'pattern' => '/excluir-curso',
          'callback' => function() {
              Controller\CursoController::deleteCurso();
+         }
+     ],
+     [
+         'pattern' => '/aluno-inscricao',
+         'callback' => function() {
+             Controller\CursoController::incricaoCurso();
          }
      ],
      //Aula

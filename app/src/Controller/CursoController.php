@@ -4,6 +4,7 @@ use IntecPhp\Model\CursoModel;
 use IntecPhp\Model\AulaModel;
 use IntecPhp\Model\ResponseHandler;
 use IntecPhp\Entity\Curso;
+use IntecPhp\Entity\UsuarioXCurso;
 use IntecPhp\Entity\Aula;
 
 class CursoController
@@ -60,7 +61,6 @@ class CursoController
 
     public static function getAllCurso()
     {
-      session_start();
 
       $cursos = CursoModel::getAllCurso();
 
@@ -122,6 +122,25 @@ class CursoController
         }
 
         $rp->printJson();
+    }
+
+    public static function incricaoCurso( )
+    {
+      session_start();
+      $idCurso = filter_input(INPUT_POST, "id");
+      $userId = $_SESSION['userId'];
+
+      $curso = UsuarioXCurso::incricaoCurso($userId, $idCurso);
+
+      if ($curso > 0) {
+        $rp = new ResponseHandler(200, 'ok');
+      }
+      else{
+        $rp = new ResponseHandler(400, 'Faltam dados!');
+      }
+
+      $rp->printJson();
+
     }
 
 }

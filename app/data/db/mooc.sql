@@ -23,13 +23,13 @@ CREATE TABLE aula ( id int(11) not null auto_increment,
   video varchar(128),
   videoLibras varchar(128),
   primary key(id),
-  FOREIGN KEY (idCurso) REFERENCES curso(id) on delete cascade 
+  FOREIGN KEY (idCurso) REFERENCES curso(id) on delete cascade
 );
 
 alter table curso add video varchar(128);
 
 create table usuario_x_curso(
-  id int(11),
+  id int(11) not null auto_increment,
   idUsuario int(11),
   idCurso int(11),
   primary key(id),
