@@ -13,12 +13,23 @@ class UsuarioXCurso {
               ]);
 
     if($stm){
-
       return $stm->rowCount();
 
     }
     return -1;
+  }
 
+  function removeCursoAluno($idUser, $idCurso){
+    $conn = DbHandler::getInstance();
+
+    $stm = $conn->query('delete from usuario_x_curso where idUsuario = ? and idCurso = ?', [$idUser, $idCurso]);
+
+    if($stm){
+      return $stm->rowCount();
+    }
+
+    return -1;
+    
   }
 
 
