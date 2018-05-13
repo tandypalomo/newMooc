@@ -34,6 +34,6 @@ create table usuario_x_curso(
   idUsuario int(11),
   idCurso int(11),
   primary key(id),
-  FOREIGN KEY (idUsuario) REFERENCES usuario(id),
-  FOREIGN KEY (idCurso) REFERENCES curso(id)
+  FOREIGN KEY (idUsuario) REFERENCES usuario(id) on delete cascade,
+  FOREIGN KEY (idCurso) REFERENCES curso(id) on delete cascade
 );
