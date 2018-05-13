@@ -78,7 +78,7 @@ var vueCurso = new Vue({
                   url: "/remove-curso",
                   dataType: "json",
                   data: dados,
-                  
+
                   success: function (result) {
                     alert("Curso removido com sucesso!");
 
@@ -116,5 +116,74 @@ function getUserCursos() {
       var d = response.data;
       console.log('resp', d);
       veDataCurso.cursos = d;
+  });
+}
+
+
+var veDataAula = {
+    aulas: []
+}
+
+var vueAula = new Vue({
+    el: "#aula-curso",
+    data: veDataAula,
+    methods: {
+        removeaula: function(aulaId){
+            if(confirm('Tem certeza que deseja remover este curso: ' + aulaId)) {
+
+              var dados = {
+                id: aulaId
+              };
+
+              $.post({
+                  url: "/excluir-curso",
+                  dataType: "json",
+                  data: dados,
+                  success: function (result) {
+                    alert("Curso excluido com sucesso!");
+
+                  },
+                  error: function (result) {
+                      alert("Ocorreu um erro!");
+                      console.log(result);
+                  }
+              });
+                var index = null;
+
+                this.cursos.find(function(t, i){
+                    if(t.id == aulaId) {
+                        index = i;
+                        return true;
+                    }
+                });
+                if(index !== null) {
+                    this.aula.splice(index, 1);
+                }
+            }
+        },
+
+    }
+});
+
+function getAulas(idCurso) {
+  var dados = {
+    id : idCurso
+  }
+
+  $.post({
+      url: "/get-aula",
+      dataType: "json",
+      data: dados,
+      success: function (response) {
+        // alert("Curso excluido com sucesso!");
+        var d = response.data;
+        console.log(d);
+        veDataAula.aulas = d;
+
+      },
+      error: function (response) {
+          alert("Ocorreu um erro!");
+          // console.log(result);
+      }
   });
 }
