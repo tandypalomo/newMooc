@@ -34,6 +34,15 @@ return [
         },
     ],
     [
+        'pattern' => '/interprete',
+        'callback' => function() {
+            $layout = new Layout();
+            $layout
+            ->addScript('/js/home-interprete.min.js')
+            ->render('interprete/home');
+        },
+    ],
+    [
         'pattern' => '/components',
         'callback' => function() {
             $layout = new Layout();
