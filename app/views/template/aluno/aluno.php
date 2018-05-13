@@ -9,7 +9,7 @@
   </div>
 </div>
 <hr />
-
+<h2 class="text-center">Meus Cursos</h2>
 <div class="row" id="cursos-prof">
     <div class="col-md-4 col-sm-6 col-xs-12 text-center" v-for="curso in cursos">
         <div class="thumbnail">
@@ -54,7 +54,6 @@
                              <p>{{aula.descricao}}</p>
                              <p>
                                  <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.id)">Ver</button>
-                                 <button class="btn btn-danger" role="button" v-on:click="removeaula(aula.id)">Remover</button>
                              </p>
                          </div>
                      </div>
@@ -63,9 +62,7 @@
 
            </div>
            <div class="modal-footer">
-             <div class="col-md-12 col-xs-12 text-center">
-               <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modal-cadastro-curso">Novo Aula</button>
-             </div>
+             
            </div>
        </div>
    </div>
