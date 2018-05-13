@@ -74,6 +74,21 @@ var vueCurso = new Vue({
                 id: cursoId
               };
 
+              $.post({
+                  url: "/remove-curso",
+                  dataType: "json",
+                  data: dados,
+                  
+                  success: function (result) {
+                    alert("Curso removido com sucesso!");
+
+                  },
+                  error: function (result) {
+                      alert("Ocorreu um erro!");
+                      console.log(result);
+                  }
+              });
+
                 var index = null;
 
                 this.cursos.find(function(t, i){

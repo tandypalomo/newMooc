@@ -87,6 +87,24 @@ class CursoController
 
       $rp->printJson();
     }
+
+    function removeCursoAluno()
+    {
+      session_start();
+
+      $idUser = $_SESSION['userId'];
+      $idCurso = filter_input(INPUT_POST, 'id');
+
+      $curso = UsuarioXCurso::removeCursoAluno($idUser, $idCurso);
+
+      if ($curso > 0) {
+          $rp = new ResponseHandler(200, 'Excluido com sucesso!');
+      } else {
+        $rp = new ResponseHandler(400, 'Não foi possivel');
+      }
+
+      $rp->printJson();
+    }
     // AULA
     function cadastrarAula() {
       session_start();

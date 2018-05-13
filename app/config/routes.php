@@ -93,6 +93,8 @@ return [
          }
      ],
      //CURSO
+
+     //Professor
      [
          'pattern' => '/cadastrar-curso',
          'callback' => function() {
@@ -117,6 +119,7 @@ return [
              Controller\CursoController::deleteCurso();
          }
      ],
+     //Aluno
      [
          'pattern' => '/aluno-inscricao',
          'callback' => function() {
@@ -127,6 +130,12 @@ return [
          'pattern' => '/aluno-get-cursos',
          'callback' => function() {
              Controller\CursoController::getCursoAluno();
+         }
+     ],
+     [
+         'pattern' => '/remove-curso',
+         'callback' => function() {
+             Controller\CursoController::removeCursoAluno();
          }
      ],
      //Aula
