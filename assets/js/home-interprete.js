@@ -41,6 +41,7 @@ var vueTodosCurso = new Vue({
           success: function (result) {
             alert('cadastrado');
             getUserCursos();
+            $("#modal-novos-cursos").modal('hide');
           },
           error: function (result) {
               alert("Ocorreu um erro!");
@@ -64,7 +65,7 @@ var veDataCurso = {
 }
 
 var vueCurso = new Vue({
-    el: "#cursos-prof",
+    el: "#cursos-interprete",
     data: veDataCurso,
     methods: {
         removecurso: function(cursoId){
@@ -128,40 +129,15 @@ var vueAula = new Vue({
     el: "#aula-curso",
     data: veDataAula,
     methods: {
-        removeaula: function(aulaId){
-            if(confirm('Tem certeza que deseja remover este curso: ' + aulaId)) {
+        seeaula: function(nome, aulaVideo){
 
-              var dados = {
-                id: aulaId
-              };
+          $("#srcAula").attr('src', aulaVideo);
+          $('#modal-aula').modal('show');
 
-              $.post({
-                  url: "/excluir-curso",
-                  dataType: "json",
-                  data: dados,
-                  success: function (result) {
-                    alert("Curso excluido com sucesso!");
-
-                  },
-                  error: function (result) {
-                      alert("Ocorreu um erro!");
-                      console.log(result);
-                  }
-              });
-                var index = null;
-
-                this.cursos.find(function(t, i){
-                    if(t.id == aulaId) {
-                        index = i;
-                        return true;
-                    }
-                });
-                if(index !== null) {
-                    this.aula.splice(index, 1);
-                }
-            }
         },
-
+        enviarLibras: function(cursoId){
+            $('#modal-video-libras').modal('show');
+        }
     }
 });
 

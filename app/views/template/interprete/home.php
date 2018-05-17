@@ -10,7 +10,7 @@
 </div>
 <hr />
 <h2 class="text-center">Meus Cursos</h2>
-<div class="row" id="cursos-prof">
+<div class="row" id="cursos-interprete">
     <div class="col-md-4 col-sm-6 col-xs-12 text-center" v-for="curso in cursos">
         <div class="thumbnail">
             <img v-bind:src="curso.imgSrc" v-bind:alt="curso.imgAlt">
@@ -53,7 +53,8 @@
                              <iframe v-bind:src="aula.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                              <p>{{aula.descricao}}</p>
                              <p>
-                                 <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.id)">Ver</button>
+                                 <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.nome, aula.video)">Ver</button>
+                                 <button class="btn btn-success" role="button" v-on:click="enviarLibras(aula.id)">Video Libras</button>
                              </p>
                          </div>
                      </div>
@@ -103,6 +104,74 @@
            </div>
            <div class="modal-footer">
 
+           </div>
+       </div>
+   </div>
+</div>
+
+<!-- Modal AULA -->
+<div id="modal-aula" class="modal fade" role="dialog">
+   <div class="modal-dialog modal-lg">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <div class="text-center">
+
+                   <h1>Aula <span id="nome-aula"></span></h1>
+               </div>
+           </div>
+
+           <div class="col-md-12 text-center">
+             <hr>
+             <div class="row" id="aula-curso">
+                 <div class="col-md-10 col-md-offset-1 col-sm-6 col-xs-12 text-center" v-for="aula in aulas">
+                     <div class="thumbnail">
+
+                         <div class="caption">
+                             <iframe id="srcAula" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+           </div>
+           <div class="modal-footer">
+
+           </div>
+       </div>
+   </div>
+</div>
+
+<!-- Modal CADASTRO CURSO -->
+<div id="modal-video-libras" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <div class="text-center">
+
+                   <h1>Video Libras</h1>
+               </div>
+           </div>
+
+           <div class="col-md-12 text-center">
+               <br>
+               <div class="form-group-lg col-md-12 col-lg-12 col-sm-9 col-xs-12">
+
+                 <div>
+                     <input class="input-lg" type="text" placeholder="Video Libras(YouTube)" required="" id="youTube" />
+                 </div>
+                 <br>
+               </div>
+           </div>
+           <div class="modal-footer">
+               <div class="text-center">
+                 <button class="btn-primary btn-lg" type="button" id="btnVideoLibras">Cadastrar</button>
+               </div>
            </div>
        </div>
    </div>
