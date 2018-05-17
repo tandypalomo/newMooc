@@ -41,6 +41,7 @@ var vueTodosCurso = new Vue({
           success: function (result) {
             alert('cadastrado');
             getUserCursos();
+            $("#modal-novos-cursos").modal('hide');
           },
           error: function (result) {
               alert("Ocorreu um erro!");

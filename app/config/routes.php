@@ -39,6 +39,7 @@ return [
             $layout = new Layout();
             $layout
             ->addScript('/js/home-interprete.min.js')
+            ->addStylesheet('/css/interprete.min.css')
             ->render('interprete/home');
         },
     ],
