@@ -163,7 +163,8 @@
                <div class="form-group-lg col-md-12 col-lg-12 col-sm-9 col-xs-12">
 
                  <div>
-                     <input class="input-lg" type="text" placeholder="Video Libras(YouTube)" required="" id="youTube" />
+                   <input class="input-lg" type="hidden" id="idAulaLibras" />
+                   <input class="input-lg" type="text" placeholder="Video Libras(YouTube)" required="" id="youTube" />
                  </div>
                  <br>
                </div>

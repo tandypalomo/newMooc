@@ -160,7 +160,28 @@ class CursoController
       $rp->printJson();
 
     }
+    public static function enviaLibras( )
+    {
+      $idAula = filter_input(INPUT_POST, "id");
+      $youTube = filter_input(INPUT_POST, "video");
 
+      $yT = explode('=', $youTube);
+      if($yT[0] == 'https://www.youtube.com/watch?v'){
+
+        $youTube = 'https://www.youtube.com/embed/' . $yT[1];
+      }
+      
+      $aula = Aula::cadastraVideoLibras($idAula, $youTube);
+
+      if ($aula > 0) {
+        $rp = new ResponseHandler(200, 'ok');
+      }
+      else{
+        $rp = new ResponseHandler(400, 'Faltam dados!');
+      }
+
+      $rp->printJson();
+    }
     public static function getCursoAluno( )
     {
       session_start();
