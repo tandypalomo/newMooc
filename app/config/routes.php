@@ -161,6 +161,12 @@ return [
              Controller\CursoController::getAula();
          }
      ],
+     [
+         'pattern' => '/enviaLibras',
+         'callback' => function() {
+             Controller\CursoController::enviaLibras();
+         }
+     ],
     [
         'pattern' => '/user-area',
         'middlewares' => [

@@ -4,6 +4,37 @@ $(document).ready(function () {
   getTodosCursos();
   getUserCursos();
 
+    $('#btnVideoLibras').click(function(){
+
+      var videoYoutube = $('#youTube').val();
+      var idAula = $('#idAulaLibras').val();
+
+      if(videoYoutube == '' || videoYoutube == undefined) {
+        alert("Adicione o link do video");
+      } else {
+
+        var dados = {
+          id : idAula,
+          video : videoYoutube
+        }
+
+        $.post({
+          url: "/enviaLibras",
+          dataType: "json",
+          data: dados,
+          success: function(data){
+
+            alert("enviado");
+          },
+          error: function (result) {
+              alert("Ocorreu um erro!");
+
+          }
+        });
+      }
+
+    });
+
     $('#sair').click(function(){
 
       $.ajax({
@@ -135,8 +166,9 @@ var vueAula = new Vue({
           $('#modal-aula').modal('show');
 
         },
-        enviarLibras: function(cursoId){
-            $('#modal-video-libras').modal('show');
+        enviarLibras: function(aulaId){
+          $("#idAulaLibras").val(aulaId);
+          $('#modal-video-libras').modal('show');
         }
     }
 });

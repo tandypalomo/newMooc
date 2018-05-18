@@ -26,6 +26,19 @@ class Aula {
 
     }
 
+    public static function cadastraVideoLibras($idAula, $video){
+      $conn = DbHandler::getInstance();
+      
+      $stm = $conn->query("update aula set videoLibras = ? where id = ?", [
+          $video, $idAula
+      ]);
+
+      if($stm) {
+        return $stm->rowCount();
+      }
+      return -1;
+    }
+
     public static function lastByCursoId($idCurso)
     {
         $conn = DbHandler::getInstance();
