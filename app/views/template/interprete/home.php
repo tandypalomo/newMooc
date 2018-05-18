@@ -119,7 +119,7 @@
                <button type="button" class="close" data-dismiss="modal">&times;</button>
                <div class="text-center">
 
-                   <h1>Aula <span id="nome-aula"></span></h1>
+                   <h1><span id="nome-aula"></span></h1>
                </div>
            </div>
 
@@ -144,7 +144,7 @@
    </div>
 </div>
 
-<!-- Modal CADASTRO CURSO -->
+<!-- Modal CADASTRO Video Libras -->
 <div id="modal-video-libras" class="modal fade" role="dialog">
    <div class="modal-dialog">
 

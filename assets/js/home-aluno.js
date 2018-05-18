@@ -129,39 +129,13 @@ var vueAula = new Vue({
     el: "#aula-curso",
     data: veDataAula,
     methods: {
-        removeaula: function(aulaId){
-            if(confirm('Tem certeza que deseja remover este curso: ' + aulaId)) {
+      seeaula: function(nome, aulaVideo){
 
-              var dados = {
-                id: aulaId
-              };
+        $("#srcAula").attr('src', aulaVideo);
+        $("#nome-aula").append(nome);
+        $('#modal-aula').modal('show');
 
-              $.post({
-                  url: "/excluir-curso",
-                  dataType: "json",
-                  data: dados,
-                  success: function (result) {
-                    alert("Curso excluido com sucesso!");
-
-                  },
-                  error: function (result) {
-                      alert("Ocorreu um erro!");
-                      console.log(result);
-                  }
-              });
-                var index = null;
-
-                this.cursos.find(function(t, i){
-                    if(t.id == aulaId) {
-                        index = i;
-                        return true;
-                    }
-                });
-                if(index !== null) {
-                    this.aula.splice(index, 1);
-                }
-            }
-        },
+      },
 
     }
 });
