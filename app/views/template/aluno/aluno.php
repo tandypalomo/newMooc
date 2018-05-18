@@ -53,7 +53,7 @@
                              <iframe v-bind:src="aula.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                              <p>{{aula.descricao}}</p>
                              <p>
-                                 <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.id)">Ver</button>
+                                 <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.nome, aula.video)">Ver</button>
                              </p>
                          </div>
                      </div>
@@ -62,7 +62,7 @@
 
            </div>
            <div class="modal-footer">
-             
+
            </div>
        </div>
    </div>
@@ -95,6 +95,41 @@
                              <p>
                                  <button class="btn btn-primary" role="button" v-on:click="inscrever(todo.id)">Increver</button>
                              </p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+           </div>
+           <div class="modal-footer">
+
+           </div>
+       </div>
+   </div>
+</div>
+
+<!-- Modal AULA -->
+<div id="modal-aula" class="modal fade" role="dialog">
+   <div class="modal-dialog modal-lg">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <div class="text-center">
+
+                   <h1><span id="nome-aula"></span></h1>
+               </div>
+           </div>
+
+           <div class="col-md-12 text-center">
+             <hr>
+             <div class="row" id="aula-curso">
+                 <div class="col-md-10 col-md-offset-1 col-sm-6 col-xs-12 text-center" v-for="aula in aulas">
+                     <div class="thumbnail">
+
+                         <div class="caption">
+                             <iframe id="srcAula" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                          </div>
                      </div>
                  </div>
