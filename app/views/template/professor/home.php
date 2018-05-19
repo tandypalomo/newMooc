@@ -2,10 +2,10 @@
 <div class= "row">
   <div class="col-md-4 col-xs-4"><p>MOOC ACESSIBILIDADE</p></div>
   <div class="col-md-2 col-md-offset-2 col-xs-4">
-    <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modal-cadastro-curso">Novo Curso</button>
+    <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#modal-cadastro-curso">Novo Curso</button>
   </div>
   <div class="col-md-1 col-md-offset-3 col-xs-4">
-    <button type="button" class="btn-lg btn-danger" id="sair" >Sair</button>
+    <button type="button" class="btn btn-lg btn-danger" id="sair" >Sair</button>
   </div>
 </div>
 <hr />
@@ -19,7 +19,7 @@
                 <iframe v-bind:src="curso.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 <p>{{curso.descricao}}</p>
                 <p>
-                    <button class="btn btn-primary" role="button" v-on:click="seecurso(curso.id)">Ver</button>
+                    <button class="btn btn-info" role="button" v-on:click="seecurso(curso.id)">Ver</button>
                     <button class="btn btn-danger" role="button" v-on:click="removecurso(curso.id)">Remover</button>
                 </p>
             </div>
@@ -63,7 +63,7 @@
             </div>
             <div class="modal-footer">
                 <div class="text-center">
-                  <button class="btn-primary btn-lg" type="button" id="btnCadastrar">Cadastrar</button>
+                  <button class="btn btn-info btn-lg" type="button" id="btnCadastrar">Cadastrar</button>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
                              <iframe v-bind:src="aula.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                              <p>{{aula.descricao}}</p>
                              <p>
-                                 <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.nome, aula.video)">Ver</button>
+                                 <button class="btn btn-info" role="button" v-on:click="seeaula(aula.nome, aula.video)">Ver</button>
                                  <button class="btn btn-danger" role="button" v-on:click="removeaula(aula.id)">Remover</button>
                              </p>
                          </div>
@@ -108,7 +108,7 @@
            </div>
            <div class="modal-footer">
              <div class="col-md-12 col-xs-12 text-center">
-               <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modal-cadastro-curso">Novo Aula</button>
+               <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#modal-cadastro-curso">Nova Aula</button>
              </div>
            </div>
        </div>

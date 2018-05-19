@@ -21,6 +21,7 @@ return [
             $layout = new Layout();
             $layout
             ->addScript('/js/home-aluno.min.js')
+            ->addStylesheet('/css/interprete.min.css')
             ->render('aluno/aluno');
         },
     ],
@@ -30,6 +31,7 @@ return [
             $layout = new Layout();
             $layout
             ->addScript('/js/home-professor.min.js')
+            ->addStylesheet('/css/interprete.min.css')
             ->render('professor/home');
         },
     ],
@@ -41,6 +43,16 @@ return [
             ->addScript('/js/home-interprete.min.js')
             ->addStylesheet('/css/interprete.min.css')
             ->render('interprete/home');
+        },
+    ],
+    [
+        'pattern' => '/youTube',
+        'callback' => function() {
+            $layout = new Layout();
+            $layout
+            ->addScript('/js/youTube.min.js')
+            // ->addStylesheet('/css/interprete.min.css')
+            ->render('interprete/youTube');
         },
     ],
     [
