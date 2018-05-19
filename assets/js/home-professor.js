@@ -29,6 +29,39 @@ $(document).ready(function () {
 
   });
 
+  $("#nova-aula").click( function(){
+    var idCurso = $("#id-curso-modal").val();
+    $("#id-curso-aula").val(idCurso);
+  });
+
+  $("#btnCadastrarAula").click(function(){
+    var dados = {
+        nomeAula: $("#nomeAula").val(),
+        desc: $("#descricaoAula").val(),
+        youTube: $('#youTubeAula').val(),
+        idCurso : $("#id-curso-aula").val()
+    };
+
+    $("#btnCadastrarAula").attr('disabled', 'disabled');
+    $.post({
+        url: "/cadastrar-aula",
+        dataType: "json",
+        data: dados,
+        success: function (result) {
+          alert("Curso cadastrado com sucesso!");
+          getAula();
+          $("#modal-nova-aula").modal("hide");
+          $("#modal-nova-aula").find('input:text').val('');
+        },
+        error: function (result) {
+            alert("Ocorreu um erro!");
+            $("#modal-nova-aula").modal("hide");
+            $("#modal-nova-aula").find('input:text').val('');
+            console.log(result);
+        }
+    });
+  });
+
     $('#sair').click(function(){
 
       $.ajax({
@@ -92,6 +125,7 @@ var vueCurso = new Vue({
         seecurso: function(cursoId){
           getAulas(cursoId);
           $('#modal-aulas').modal('show');
+          $('#id-curso-modal').val(cursoId);
         }
 
     }
@@ -114,18 +148,18 @@ var vueAula = new Vue({
     data: veDataAula,
     methods: {
         removeaula: function(aulaId){
-            if(confirm('Tem certeza que deseja remover este curso: ' + aulaId)) {
+            if(confirm('Tem certeza que deseja remover esta aula: ' + aulaId)) {
 
               var dados = {
                 id: aulaId
               };
 
               $.post({
-                  url: "/excluir-curso",
+                  url: "/excluir-aula",
                   dataType: "json",
                   data: dados,
                   success: function (result) {
-                    alert("Curso excluido com sucesso!");
+                    alert("Aula excluida com sucesso!");
 
                   },
                   error: function (result) {
@@ -135,7 +169,7 @@ var vueAula = new Vue({
               });
                 var index = null;
 
-                this.cursos.find(function(t, i){
+                this.aula.find(function(t, i){
                     if(t.id == aulaId) {
                         index = i;
                         return true;

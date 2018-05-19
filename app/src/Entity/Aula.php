@@ -26,9 +26,22 @@ class Aula {
 
     }
 
+    public static function excluiAula($idAula){
+
+      $conn = DbHandler::getInstance();
+
+      $stm = $conn->query('delete from aula where id=?', [ $idAula
+                ]);
+
+      if($stm) {
+        return $stm->rowCount();
+      }
+      return -1;
+    }
+
     public static function cadastraVideoLibras($idAula, $video){
       $conn = DbHandler::getInstance();
-      
+
       $stm = $conn->query("update aula set videoLibras = ? where id = ?", [
           $video, $idAula
       ]);

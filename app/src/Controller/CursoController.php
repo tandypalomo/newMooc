@@ -110,9 +110,15 @@ class CursoController
       session_start();
       $id ='';
       $nomeAula = filter_input(INPUT_POST, "nomeAula");
-      $youTube = filter_input(INPUT_POST, "aulaYoutube");
-      $descricao = filter_input(INPUT_POST, "descricao");
+      $youTube = filter_input(INPUT_POST, "youTube");
+      $descricao = filter_input(INPUT_POST, "desc");
       $idCurso = filter_input(INPUT_POST, "idCurso");
+
+      $yT = explode('=', $youTube);
+      if($yT[0] == 'https://www.youtube.com/watch?v'){
+
+        $youTube = 'https://www.youtube.com/embed/' . $yT[1];
+      }
 
       $aula = new AulaModel($id, $nomeAula, $youTube, $descricao, $idCurso);
 
@@ -127,10 +133,25 @@ class CursoController
       $rp->printJson();
     }
 
+    public static function excluiAula( )
+    {
+      $idAula = filter_input(INPUT_POST, "id");
+      $aula = Aula::excluiAula($idAula);
+
+      if ($aula > 0) {
+        $rp = new ResponseHandler(200, 'Excluido com Sucesso');
+      }
+      else{
+        $rp = new ResponseHandler(400, 'Ocorreu um erro!');
+      }
+
+      $rp->printJson();
+    }
+
     public static function getAula( )
     {
-        $idCurso = filter_input(INPUT_POST, "id");
-        $aulas = Aula::getAula($idCurso);
+        $idAula = filter_input(INPUT_POST, "id");
+        $aulas = Aula::getAula($idAula);
 
         if ($aulas) {
           $rp = new ResponseHandler(200, 'ok',  $aulas);
@@ -170,7 +191,7 @@ class CursoController
 
         $youTube = 'https://www.youtube.com/embed/' . $yT[1];
       }
-      
+
       $aula = Aula::cadastraVideoLibras($idAula, $youTube);
 
       if ($aula > 0) {

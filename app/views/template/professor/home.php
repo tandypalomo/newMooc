@@ -72,7 +72,7 @@
 
 <!-- MODAL AULAS -->
 
-<!-- Modal CADASTRO CURSO -->
+<!-- Modal AULAS -->
 <div id="modal-aulas" class="modal fade" role="dialog">
    <div class="modal-dialog modal-lg">
 
@@ -88,6 +88,7 @@
 
            <div class="col-md-12 text-center">
              <hr>
+             <input type="hidden" value="" id="id-curso-modal">
              <div class="row" id="aula-curso">
                  <div class="col-md-6 col-sm-6 col-xs-12 text-center" v-for="aula in aulas">
                      <div class="thumbnail">
@@ -108,8 +109,51 @@
            </div>
            <div class="modal-footer">
              <div class="col-md-12 col-xs-12 text-center">
-               <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#modal-cadastro-curso">Nova Aula</button>
+               <button type="button" class="btn btn-lg btn-info" data-toggle="modal" id="nova-aula" data-target="#modal-nova-aula">Nova Aula</button>
              </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+<!-- Modal CADASTRO Aula -->
+<div id="modal-nova-aula" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <div class="text-center">
+
+                   <h1>Nova Aula</h1>
+               </div>
+           </div>
+
+           <div class="col-md-12 text-center">
+               <br>
+               <div class="form-group-lg col-md-12 col-lg-12 col-sm-9 col-xs-12">
+
+                   <div>
+                        <input type="hidden" value="" id="id-curso-aula">
+                       <input class="input-lg" type="text" placeholder="Nome" required="" id="nomeAula" />
+                   </div>
+                   <br>
+                   <div>
+                       <input class="input-lg" type="text" placeholder="Video da Aula" required="" id="youTubeAula" />
+                   </div>
+                   <br>
+                   <div>
+                       <input class="input-lg" type="text" placeholder="Descrição" required="" id="descricaoAula" />
+                   </div>
+                   <br>
+
+               </div>
+           </div>
+           <div class="modal-footer">
+               <div class="text-center">
+                 <button class="btn btn-info btn-lg" type="button" id="btnCadastrarAula">Cadastrar</button>
+               </div>
            </div>
        </div>
    </div>
