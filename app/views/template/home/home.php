@@ -1,8 +1,8 @@
 <div class= "row">
   <div class="col-lg-8"><p>MOOC ACESSIBILIDADE</p></div>
   <div class="col-lg-2 col-lg-offset-2">
-      <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modalLogin">Login</button>
-      <button type="button" class="btn-lg btn-info" data-toggle="modal" data-target="#modalCadastro">Cadastrar</button>
+      <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#modalLogin">Login</button>
+      <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#modalCadastro">Cadastrar</button>
   </div>
 </div>
 
@@ -39,7 +39,7 @@
 
             <div class="modal-footer">
               <div class=" col-md-12 text-center">
-                <button class="btn-primary btn-lg" type="button" id="btnLogin">Login</button>
+                <button class="btn btn-primary btn-lg" type="button" id="btnLogin">Login</button>
               </div>
             </div>
 
@@ -94,7 +94,7 @@
             </div>
             <div class="modal-footer">
                 <div class="text-center">
-                  <button class="btn-primary btn-lg" type="button" id="btnCadastrar">Cadastrar</button>
+                  <button class="btn btn-primary btn-lg" type="button" id="btnCadastrar">Cadastrar</button>
                 </div>
             </div>
         </div>
