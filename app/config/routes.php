@@ -168,6 +168,12 @@ return [
          }
      ],
      [
+         'pattern' => '/excluir-aula',
+         'callback' => function() {
+             Controller\CursoController::excluiAula();
+         }
+     ],
+     [
          'pattern' => '/get-aula',
          'callback' => function() {
              Controller\CursoController::getAula();
