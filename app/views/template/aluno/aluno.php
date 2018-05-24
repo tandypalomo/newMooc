@@ -53,7 +53,7 @@
                              <iframe v-bind:src="aula.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                              <p>{{aula.descricao}}</p>
                              <p>
-                                 <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.nome, aula.video)">Ver</button>
+                                 <button class="btn btn-primary" role="button" v-on:click="seeaula(aula.nome, aula.video, aula.videoLibras)">Ver</button>
                              </p>
                          </div>
                      </div>
@@ -131,6 +131,7 @@
                          <div class="caption">
                              <iframe id="srcAula" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                          </div>
+                         <iframe id="srcAulaLibras" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                      </div>
                  </div>
              </div>
