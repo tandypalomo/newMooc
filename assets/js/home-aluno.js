@@ -129,9 +129,10 @@ var vueAula = new Vue({
     el: "#aula-curso",
     data: veDataAula,
     methods: {
-      seeaula: function(nome, aulaVideo){
+      seeaula: function(nome, aulaVideo, videoLibras){
 
         $("#srcAula").attr('src', aulaVideo);
+        $("#srcAulaLibras").attr('src', videoLibras);
         $("#nome-aula").append(nome);
         $('#modal-aula').modal('show');
 
