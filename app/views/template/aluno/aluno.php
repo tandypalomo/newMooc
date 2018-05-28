@@ -20,7 +20,7 @@
                 <p>{{curso.descricao}}</p>
                 <p>
                     <button class="btn btn-info" role="button" v-on:click="seecurso(curso.id)">Ver</button>
-                    <button class="btn btn-danger" role="button" v-on:click="removecurso(curso.id)">Remover</button>
+                    <button class="btn btn-danger" role="button" v-on:click="removecurso(curso.id)">Desinscrever</button>
                 </p>
             </div>
         </div>
@@ -93,7 +93,7 @@
                              <iframe v-bind:src="todo.video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                              <p>{{todo.descricao}}</p>
                              <p>
-                                 <button class="btn btn-primary" role="button" v-on:click="inscrever(todo.id)">Increver</button>
+                                 <button class="btn btn-primary" role="button" v-on:click="inscrever(todo.id)">Inscrever</button>
                              </p>
                          </div>
                      </div>
@@ -127,11 +127,11 @@
              <div class="row" id="aula-curso">
                  <div class="col-md-10 col-md-offset-1 col-sm-6 col-xs-12 text-center" v-for="aula in aulas">
                      <div class="thumbnail">
-
+                        <button class="btn btn-success" id="play-videos">Play</button>
                          <div class="caption">
                              <iframe id="srcAula" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                          </div>
-                         <iframe id="srcAulaLibras" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                              <iframe id="srcAulaLibras" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                      </div>
                  </div>
              </div>

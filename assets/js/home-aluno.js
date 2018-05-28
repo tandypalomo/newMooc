@@ -39,7 +39,7 @@ var vueTodosCurso = new Vue({
           dataType: "json",
           data: dados,
           success: function (result) {
-            alert('cadastrado');
+            alert('Inscrição feita com sucesso!');
             getUserCursos();
             $("#modal-novos-cursos").modal('hide');
           },
@@ -69,7 +69,7 @@ var vueCurso = new Vue({
     data: veDataCurso,
     methods: {
         removecurso: function(cursoId){
-            if(confirm('Tem certeza que deseja remover este curso: ' + cursoId)) {
+            if(confirm('Tem certeza que deseja desinscrever deste curso: ' + cursoId)) {
 
               var dados = {
                 id: cursoId
@@ -81,7 +81,7 @@ var vueCurso = new Vue({
                   data: dados,
 
                   success: function (result) {
-                    alert("Curso removido com sucesso!");
+                    alert("Desinscrito com sucesso!");
 
                   },
                   error: function (result) {

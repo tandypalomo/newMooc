@@ -23,7 +23,7 @@ $(document).ready(function () {
           dataType: "json",
           data: dados,
           success: function(data){
-
+            $("#youTube").val('');
             alert("enviado");
           },
           error: function (result) {
@@ -70,7 +70,7 @@ var vueTodosCurso = new Vue({
           dataType: "json",
           data: dados,
           success: function (result) {
-            alert('cadastrado');
+            alert('Inscrição feita com sucesso!');
             getUserCursos();
             $("#modal-novos-cursos").modal('hide');
           },
@@ -100,7 +100,7 @@ var vueCurso = new Vue({
     data: veDataCurso,
     methods: {
         removecurso: function(cursoId){
-            if(confirm('Tem certeza que deseja remover este curso: ' + cursoId)) {
+            if(confirm('Tem certeza que deseja desinscrever deste curso: ' + cursoId)) {
 
               var dados = {
                 id: cursoId
@@ -160,9 +160,10 @@ var vueAula = new Vue({
     el: "#aula-curso",
     data: veDataAula,
     methods: {
-        seeaula: function(nome, aulaVideo){
+        seeaula: function(nome, aulaVideo, videoLibras){
 
           $("#srcAula").attr('src', aulaVideo);
+          $("#srcAulaLibras").attr('src', videoLibras);
           $("#nome-aula").append(nome);
           $('#modal-aula').modal('show');
 

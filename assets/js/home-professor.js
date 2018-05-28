@@ -183,6 +183,7 @@ var vueAula = new Vue({
         seeaula: function(nome, aulaVideo){
 
           $("#srcAula").attr('src', aulaVideo);
+          $("#srcAulaLibras").attr('src', videoLibras);
           $("#nome-aula").append(nome);
           $('#modal-aula').modal('show');
 
